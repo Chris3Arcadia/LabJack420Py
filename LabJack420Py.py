@@ -33,7 +33,7 @@ class LabJack420Py():
         self.resolution = 8 # resolution setting for the analog channel: 0-8 for T7, 0-12 for T7-Pro. Default value of 0 corresponds to an index of 8 (T7) or 9 (T7-Pro).
         self.range = 10 # measure range setting for the analog channel: 0.0=Default => +/-10V, 10.0 => +/-10V, 1.0 => +/-1V, 0.1 => +/-0.1V, or 0.01 => +/-0.01V.
         self.rate = 100*1e3 # acquisition rate for the analog channel in microseconds 
-        self.resistance = 250 # resistance of shunt used to measure the 4-20mA signal in ohms
+        self.resistance = 427 # 250 # resistance of shunt used to measure the 4-20mA signal in ohms
 
     def load_constants(self):
         # load constants specific to Blackfly
@@ -121,23 +121,25 @@ if __name__ == "__main__":
     slope = 1125 # transmitted signal slope [mA/pH]
     offset = -6.5 # transmitted signal offset [pH]
 
-    # prepare for logging
-    timestamp = datetime.datetime.now() 
-    timestampStr = timestamp.strftime("%Y/%m/%d %I:%M:%S%p")
-    timestampName = timestamp.strftime("%Y_%m_%d-%I_%M_%S%p")
-    filename = timestampName + "-%s.csv"%(channel)
-    fullfilename = os.path.join(self.path['output'], filename)
-    print("Start time is: %s" %(timestampStr))
-    print("Reading %s %i times and saving data to the file:\n - %s\n" %(name, iterations, fullfilename))
-    fileID = open(fullfilename, 'w')
-    fileID.write("Time Stamp, Duration/Jitter [s], pH, Signal [V], Current [mA]\n") #" %(name))
-
     # intialize variables
     iterations = 10 
     duration = 0
     iteration = 0
     skips = 0
     interval = 0
+    
+    # prepare for logging
+    timestamp = datetime.datetime.now() 
+    timestampStr = timestamp.strftime("%Y/%m/%d %I:%M:%S%p")
+    timestampName = timestamp.strftime("%Y_%m_%d-%I_%M_%S%p")
+    filename = timestampName + "-%s.csv"%(daq.channel)
+    fullfilename = os.path.join(daq.path['output'], filename)
+    print("Start time is: %s" %(timestampStr))
+    print("Reading %s %i times and saving data to the file:\n - %s\n" %(daq.channel, iterations, fullfilename))
+    fileID = open(fullfilename, 'w')
+    fileID.write("Time Stamp, Duration/Jitter [s], pH, Signal [V], Current [mA]\n") #" %(name))
+
+    # prepare logger    
     ljm.startInterval(interval, int(daq.rate))
     tic = ljm.getHostTick()
 
@@ -148,23 +150,22 @@ if __name__ == "__main__":
             skips = ljm.waitForNextInterval(interval)
             toc = ljm.getHostTick()
             duration = (toc-tic)
-            time = datetime.datetime.now()
-            timestamp = time.strftime("%Y/%m/%d %I:%M:%S%p")
+            timer = datetime.datetime.now()
+            timestamp = timer.strftime("%Y/%m/%d %I:%M:%S%p")
 
             # reading
             voltage = daq.read_channel()
-            current = voltage/resistance
-            ph = slope*current+offset
+            current = voltage/daq.resistance
+            pH = slope*current+offset
 
             # Print values
-            print("%s reading: pH of %f as %f V, duration: %0.1f ms, skipped intervals: %i" % (name, pH, voltage, duration, skips))
+            print("%s reading: pH of %f as %f V, duration: %0.1f ms, skipped intervals: %i" % (daq.channel, pH, voltage, duration, skips))
             fileID.write("%s, %0.1f, %0.3f, %0.3f, %0.3f\n" %(timestamp, duration, pH, voltage, current*1e3))
             tic = toc
             iteration = iteration + 1
         except KeyboardInterrupt:
             break
         except Exception:
-            import sys
             print(sys.exc_info()[1])
             break
     print("\nFinished!")
@@ -172,6 +173,6 @@ if __name__ == "__main__":
     # close open objects
     fileID.close()
     ljm.cleanInterval(interval)
-    self.release()
+    daq.release()
 
 # -*- coding: utf-8 -*-
