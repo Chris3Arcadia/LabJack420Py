@@ -29,7 +29,7 @@ This library has been tested on a Windows device, but since the Python wrapper f
 
 ## Example Output
 
-If you run the class' "__main__" script, you will get the following output:
+If you run the class' `__main__` script, you will get the following output:
 
 > LabJack: System initialized.
 > 
