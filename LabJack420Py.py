@@ -135,7 +135,7 @@ if __name__ == "__main__":
     filename = timestampName + "-%s.csv"%(daq.channel)
     fullfilename = os.path.join(daq.path['output'], filename)
     print("Start time is: %s" %(timestampStr))
-    print("Reading %s %i times and saving data to the file:\n - %s\n" %(daq.channel, iterations, fullfilename))
+    print("Reading %s %i times and saving data to the file:\n%s\n" %(daq.channel, iterations, fullfilename))
     fileID = open(fullfilename, 'w')
     fileID.write("Time Stamp, Duration/Jitter [s], pH, Signal [V], Current [mA]\n") #" %(name))
 
