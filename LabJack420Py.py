@@ -130,7 +130,7 @@ if __name__ == "__main__":
     print("Start time is: %s" %(timestampStr))
     print("Reading %s %i times and saving data to the file:\n - %s\n" %(name, iterations, fullfilename))
     fileID = open(fullfilename, 'w')
-    fileID.write("Time Stamp, Duration/Jitter [s], pH, Signal [V], Current [mA]" %(name))
+    fileID.write("Time Stamp, Duration/Jitter [s], pH, Signal [V], Current [mA]\n") #" %(name))
 
     # intialize variables
     iterations = 10 
@@ -138,7 +138,7 @@ if __name__ == "__main__":
     iteration = 0
     skips = 0
     interval = 0
-    ljm.startInterval(interval, daq.rate)
+    ljm.startInterval(interval, int(daq.rate))
     tic = ljm.getHostTick()
 
     # acquisition loop
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
             # Print values
             print("%s reading: pH of %f as %f V, duration: %0.1f ms, skipped intervals: %i" % (name, pH, voltage, duration, skips))
-            fileID.write("%s, %0.1f, %0.3f, %0.3f, %0.3f\r\n" %(timestamp, duration, pH, voltage, current*1e3))
+            fileID.write("%s, %0.1f, %0.3f, %0.3f, %0.3f\n" %(timestamp, duration, pH, voltage, current*1e3))
             tic = toc
             iteration = iteration + 1
         except KeyboardInterrupt:
