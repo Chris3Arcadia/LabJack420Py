@@ -33,7 +33,7 @@ class LabJack420Py():
         self.resolution = 8 # resolution setting for the analog channel: 0-8 for T7, 0-12 for T7-Pro. Default value of 0 corresponds to an index of 8 (T7) or 9 (T7-Pro).
         self.range = 10 # measure range setting for the analog channel: 0.0=Default => +/-10V, 10.0 => +/-10V, 1.0 => +/-1V, 0.1 => +/-0.1V, or 0.01 => +/-0.01V.
         self.rate = 100*1e3 # acquisition rate for the analog channel in microseconds 
-        self.resistance = 427 # 250 # resistance of shunt used to measure the 4-20mA signal in ohms
+        self.resistance = 427.3 # 250 # resistance of shunt used to measure the 4-20mA signal in ohms
 
     def load_constants(self):
         # load constants specific to Blackfly
