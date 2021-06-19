@@ -41,31 +41,31 @@ If you run the class' `__main__` script, you will get the following output:
 > 
 > Max bytes per MB: 64
 > 
-> Start time is: 2021/06/15 05:21:21PM
+> Start time is: 2021/06/18 01:43:15PM
 > 
 > Reading AIN0 10 times and saving data to the file:
 > 
-> `C:/Users/ChrisTow/Dropbox/INSPECT\__temporary__\2021_06_15-05_21_21PM-AIN0.csv`
+> `C:/Users/ChrisTow/Dropbox/INSPECT\__temporary__\2021_06_18-01_43_15PM-AIN0.csv`
 >
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100519.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.645954 as -3.489676 V, duration: 100455.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.501154 as -0.000257 V, duration: 99561.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.704948 as -3.518485 V, duration: 100021.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100447.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.679573 as -3.506093 V, duration: 100147.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100007.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.668097 as -3.500489 V, duration: 99839.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100020.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.644823 as -3.489123 V, duration: 100063.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100015.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.631569 as -3.482651 V, duration: 99952.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100004.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.605708 as -3.470022 V, duration: 100085.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 99954.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.700908 as -3.516512 V, duration: 99926.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.500799 as -0.000178 V, duration: 100046.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.697190 as -3.514696 V, duration: 100042.0 ms, skipped intervals: 0
 > 
-> AIN0 reading: pH of -6.501154 as -0.000257 V, duration: 100003.0 ms, skipped intervals: 0
+> AIN0 reading: pH of 3.676987 as -3.504830 V, duration: 100044.0 ms, skipped intervals: 0
 >
 > Finished!
 

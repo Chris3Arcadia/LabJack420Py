@@ -113,13 +113,17 @@ class LabJack420Py():
             ljm.close(self.system)
 
 if __name__ == "__main__":
+
+    # Example using the LabJack to read the 4-20mA signal from a pH transmitter (Sensorex TX10 1/8 DIN)
  
     # instantiate class
     daq = LabJack420Py()    
-    
-    # transmitter linear conversion parameters (pH from [-2.00, 16.00] is mapped sent as current from [4,20] mA)
-    slope = 1125 # transmitted signal slope [mA/pH]
-    offset = -6.5 # transmitted signal offset [pH]
+
+    # transmitter linear conversion parameters (by default pH values from [-2.00, 16.00] are signaled by currents ranging from [4,20] mA)
+    pH_range = [0, 14] # default is [-2,16]
+    I_range = [4e-3, 20e-3] # default is [4e-3,20e-3] A
+    slope =  -numpy.diff(pH_range) / numpy.diff(I_range) # slope# transmitted signal slope [pH/A]
+    offset = I_range[0]*slope + pH_range[0] # transmitted signal offset [pH]
 
     # intialize variables
     iterations = 10 
