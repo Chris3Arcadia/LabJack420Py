@@ -45,7 +45,7 @@ If you run the class' `__main__` script, you will get the following output:
 > 
 > Reading AIN0 10 times and saving data to the file:
 > 
-> `C:/Users/ChrisTow/Dropbox/INSPECT\__temporary__\2021_06_18-01_43_15PM-AIN0.csv`
+> `C:\Users\ChrisArcadia\__temporary__\2021_06_18-01_43_15PM-AIN0.csv`
 >
 > AIN0 reading: pH of 3.645954 as -3.489676 V, duration: 100455.0 ms, skipped intervals: 0
 > 
